@@ -1,0 +1,11 @@
+# Skromne rozwinięcie ( ͡° ͜ʖ ͡°) https://wykop.pl/wpis/70957081/heheszki-humorinformatykow
+
+
+dziecko = {'temp': 37, 'age': 11 }
+weather = {'temp': 22, 'day_time': 'night'}
+
+
+if weather['day_time'] == 'night' and dziecko['temp'] > 36.6:
+    print("witam")
+else:
+    print("Jest dzień babo albo młody jest zdrowy")
