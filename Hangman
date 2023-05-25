@@ -1,0 +1,105 @@
+#Hangman
+import random
+score = 0
+ 
+#word
+def random_word():
+    words = ['computer', 'jupiter', 'elephant', 'keyboard', 'weather', 'python', 'acapulco']
+    wordToGuess = random.choice(words)
+    return wordToGuess
+ 
+ 
+#debug. What word has been choose
+def debug_print(wordToGuess):
+    print(wordToGuess)
+ 
+#Game
+def board(wordToGuess, guessedLetter):
+    hideWord = ''
+    for letter in wordToGuess:
+        if letter in guessedLetter:
+            hideWord += letter
+        else:
+            hideWord += '_'
+    result = ' '.join(hideWord)
+    print(result)
+    
+ 
+ 
+def guessLetter(wordToGuess):
+    
+    global score
+    lifes = 10
+    guessedLetter = ''
+     
+    
+    dictionary = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
+    
+    
+       
+    while lifes > 0:
+        
+        
+ 
+        if set(guessedLetter) == set(wordToGuess):
+            print('You win!')
+            score += 1
+                        
+            print('Want play again? y/n')
+            playAgain = input()
+            
+            
+            if playAgain == 'y':
+                print(score)#debug
+                main()
+                
+               
+            else:
+                print(f'Thank you for playing Your score is {score}')
+                break
+ 
+        letter = input('Guess a letter: ')
+                
+        if len(letter) != 1:
+            print('Only one letter!')
+ 
+        elif letter not in dictionary:
+            print('Please enter a letter')
+        
+        elif letter in guessedLetter:
+            print('You already quess this letter')
+ 
+        elif letter not in wordToGuess:
+            lifes -= 1
+            print('Incorrect letter')
+            print(f'You have {lifes} lifes left')
+        
+        else:
+            guessedLetter += letter
+            board(wordToGuess, guessedLetter)
+            
+ 
+ 
+ 
+ 
+    while lifes == 0:
+        print('You lost')
+        print(f'Thank you for playing. Your score is {score}')
+        print('Want play again? y/n')
+        playAgain = input()
+        
+        if playAgain == 'y':
+            main()
+        else:
+            break
+           
+    
+ 
+def main():
+    wordToGuess = random_word()
+    debug_print(wordToGuess)
+    board(wordToGuess, '')
+    guessLetter(wordToGuess)
+ 
+ 
+main()
