@@ -56,7 +56,7 @@ def guessLetter(wordToGuess):
                
             else:
                 print(f'Thank you for playing Your score is {score}')
-                break
+                exit()
  
         letter = input('Guess a letter: ')
                 
